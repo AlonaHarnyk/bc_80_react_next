@@ -180,3 +180,67 @@ const fetchData = async <T>(url: string): Promise<T[]> => {
 fetchData('https://jsonplaceholder.typicode.com/posts').then(data => {
   console.log(data);
 });
+
+
+// ! Задача 9. Узагальнена функція zip
+// Умова
+// Створи функцію zip, яка:
+// приймає два масиви різного типу
+// повертає масив кортежів
+// якщо масиви різної довжини, ігнорує зайві елементи
+// зроби функцію узагальненою
+
+
+
+function zip<T, U>(array1: T[], array2: U[]): [T, U][] { 
+  const length = Math.min(array1.length, array2.length);
+  const result: [T, U][] = [];
+
+  for (let i = 0; i < length; i++) {
+    result.push([array1[i], array2[i]]);
+  }
+  return result;
+}
+const numbers = [1, 2, 3];
+const strings = ["a", "b"];
+const zipped = zip(numbers, strings); // [[1,"a"], [2,"b"]]
+console.log(zipped);
+
+// Приклад використання:
+// const numbers = [1, 2, 3];
+// const strings = ["a", "b"];
+// const zipped = zip(numbers, strings); // [[1,"a"], [2,"b"]]
+
+
+//! Задача 10. Узагальнені функції saveToStorage і loadFromStorage
+// Умова
+// Створи дві функції:
+// 1) saveToStorage
+// приймає ключ
+// приймає значення будь-якого типу
+// зберігає його у localStorage у форматі JSON
+// 2) loadFromStorage
+// приймає ключ
+// повертає значення
+// Зроби обидві функції узагальненими.
+
+function saveToStorage<T>(key: string, value: T): void {
+  localStorage.setItem(key, JSON.stringify(value));
+}
+interface User {
+  name: string;
+  age: number;
+}
+saveToStorage<User>("user", { name: "Ivan", age: 32 });
+// { name: "Ivan", age: 32 }
+
+function loadFromStorage<T>(key: string): T | null {
+  const data = localStorage.getItem(key);
+  return data === null ? null : JSON.parse(data);
+}
+console.log(loadFromStorage<User>("user"));
+
+// if (data === null) {
+//     return null;
+//   }
+//   return JSON.parse(data);
