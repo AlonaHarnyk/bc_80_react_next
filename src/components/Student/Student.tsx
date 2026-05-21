@@ -4,7 +4,7 @@ interface StudentProps {
     student: StudentItem;
 }
 
-export function Student({ student }: StudentProps) {
+export default function Student({ student }: StudentProps) {
     return <> 
       <h1>{student.name}</h1>
       <p>{student.age}</p>
