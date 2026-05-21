@@ -1,6 +1,10 @@
-import { students } from '../../data/data';
-const student = students[0];
-export function Student() {
+import type { StudentItem } from "../../types";
+
+interface StudentProps {
+    student: StudentItem;
+}
+
+export function Student({ student }: StudentProps) {
     return <> 
       <h1>{student.name}</h1>
       <p>{student.age}</p>
