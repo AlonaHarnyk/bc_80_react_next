@@ -6,7 +6,24 @@ export default function App() {
   //   return <div>test</div>;
   const [dogs, setDogs] = useState(initialDogs);
   const handleDelete = (id: number) => {
-    setDogs(dogs.filter(dog => dog.id !== id));
+    setDogs(dogs.filter((dog) => dog.id !== id));
   };
-  return <DogsList dogs={dogs} handleDelete={handleDelete} />;
+  const handleFriendlyStatusChange = (id: number) => {
+    setDogs(
+      dogs.map((item) => {
+        if (item.id === id) {
+          return { ...item, isFriendly: !item.isFriendly };
+        }
+        return item;
+      }),
+    );
+  };
+
+  return (
+    <DogsList
+      dogs={dogs}
+      handleDelete={handleDelete}
+      handleFriendlyStatusChange={handleFriendlyStatusChange}
+    />
+  );
 }
