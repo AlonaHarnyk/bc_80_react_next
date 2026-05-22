@@ -1,9 +1,9 @@
-import { createRoot } from 'react-dom/client';
-import './index.css';
-import App from './components/App/App';
+import { createRoot } from "react-dom/client";
+import "./index.css";
+import App from "./components/App/App";
 
 // createRoot(document.getElementById('root')!).render()
-createRoot(document.getElementById('root') as HTMLDivElement).render(
+createRoot(document.getElementById("root") as HTMLDivElement).render(
   // <h1>Text</h1>
-  <App />
+  <App />,
 );
