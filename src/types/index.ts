@@ -1,6 +1,8 @@
-export interface StudentItem {
-    name: string;
-    age: number;
-    isOnline: boolean;
-    id: number
+export interface Dog {
+    id: number,
+    name: string,
+    age: number,
+    breed: string,
+    isFriendly: boolean,
+    avatar: string,
 }
