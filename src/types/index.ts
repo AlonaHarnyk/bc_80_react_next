@@ -4,3 +4,10 @@ export interface StudentItem {
     isOnline: boolean;
     id: number
 }
+
+export interface User {
+    name: string;
+    email: string;
+    isOnline: boolean;
+    id: string;
+}

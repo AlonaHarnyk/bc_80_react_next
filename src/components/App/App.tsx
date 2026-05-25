@@ -1,20 +1,40 @@
-import { students } from '../../data/data';
-import Student from "../Student/Student";
-import Students from './Students/Students';
+import { useState } from "react";
+import type { User } from "../../types";
+import { getUsers } from "../../services/api";
+import Button from '../Button/Button';
+import AddForm from '../AddForm/AddForm';
 
 export default function App() {
-  //   return <div>test</div>;
-  return (
-    <>
-      <Student student={students[0]} />
-      <Student student={students[1]} />
-      <Students students={students}/>
-    </>
-    //   <h1>{student.name}</h1>
-    //   <p>{student.age}</p>
-    //   {/* <p>Is online: {student.isOnline ? 'Yes' : 'No'}</p> */}
+  const [users, setUsers] = useState<User[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const [isFormOpen, setIsFormOpen] = useState(false);
 
-    //   {student.isOnline && <p>Is online: Yes </p>}
-    // </>
-  );
+  const showUsers = async () => {
+    try {
+      setIsError(false);
+      setLoading(true);
+      const data = await getUsers();
+      setUsers(data);
+    } catch {
+      setIsError(true);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+  <>
+    {!users.length && <Button title="Show users" clickHandler={showUsers} />}
+    {loading && <p>Loading...</p>}
+      { isError && <p>Error!</p> }
+    {users.length > 0 && <ul>
+  {users.map((user) => (
+    <li key={user.id}>{user.name}</li>
+  ))}
+      </ul> }
+      { users.length > 0 && !isFormOpen && <Button title="Add user" clickHandler={ () => setIsFormOpen(true) } /> }
+      {isFormOpen && <AddForm onClose={() => setIsFormOpen(false)} />}
+  </>
+);
 }
