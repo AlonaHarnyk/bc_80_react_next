@@ -1,19 +1,12 @@
 interface ButtonProps {
-  textContent: string;
+  title: string;
   clickHandler: () => void;
 }
 
-export default function Button({ textContent, clickHandler }: ButtonProps) {
-    
+export default function Button({ title, clickHandler }: ButtonProps) {
   return (
     <button type="button" onClick={clickHandler}>
-      {textContent}
+      {title}
     </button>
   );
 }
-/*
-У кожному елементі списку потрібно додати кнопку "View profile". 
-При натисканні на кнопку має викликатися обробник події onClick,
- а у консолі браузера повинен виводитись ідентифікатор тварини.
-*/
-

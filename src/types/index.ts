@@ -1,15 +1,6 @@
-export interface DogAddress {
-  street: string;
-  city: string;
-  country: string;
-}
-
-export interface Dog {
-  id: number;
+export interface User {
   name: string;
-  age: number;
-  breed: string;
-  isFriendly: boolean;
-  avatar: string;
-  address: DogAddress;
+  email: string;
+  isOnline: boolean;
+  id: string;
 }
