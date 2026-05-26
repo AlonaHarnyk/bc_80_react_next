@@ -1,6 +1,7 @@
-export interface User {
-  name: string;
-  email: string;
-  isOnline: boolean;
+export interface Book {
+  author: string;
+  title: string;
+  year: number;
+  description: string;
   id: string;
 }
