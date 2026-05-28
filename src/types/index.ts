@@ -7,3 +7,10 @@ export interface Book {
 }
 
 export type TabVariant = 'users' | 'books';
+
+export interface User {
+  name: string;
+  email: string;
+  isOnline: boolean;
+  id: string;
+}
