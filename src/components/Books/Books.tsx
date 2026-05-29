@@ -7,6 +7,7 @@ import ErrorNotification from '../ErrorNotification/ErrorNotification';
 import Modal from '../Modal/Modal';
 import { useQuery } from '@tanstack/react-query';
 import Pagination from '../Pagination/Pagination';
+import AddBookForm from './AddBookForm';
 
 export default function Books() {
   const [description, setDescription] = useState('');
@@ -34,6 +35,7 @@ export default function Books() {
 
   return (
     <>
+      <AddBookForm />
       {isLoading && <Loading />}
       <Pagination
         totalPages={8}
