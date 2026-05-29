@@ -3,6 +3,7 @@ import Books from '../Books/Books';
 import { Tabs, type Tab } from '../Tabs/Tabs';
 import type { TabVariant } from '../../types';
 import Users from '../Users/Users';
+import Contacts from '../Contact/Contact';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<TabVariant>('books');
@@ -20,6 +21,12 @@ export default function App() {
         setActiveTab('users');
       },
     },
+    {
+      textContent: 'Contact',
+      handler: () => {
+        setActiveTab('contact');
+      },
+    },
   ];
 
   return (
@@ -27,6 +34,7 @@ export default function App() {
       <Tabs tabs={tabsConfig} />
       {activeTab === 'books' && <Books />}
       {activeTab === 'users' && <Users />}
+      {activeTab === 'contact' && <Contacts />}
     </>
   );
 }

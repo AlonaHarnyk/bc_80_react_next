@@ -6,7 +6,7 @@ export interface Book {
   id: string;
 }
 
-export type TabVariant = 'users' | 'books';
+export type TabVariant = 'users' | 'books' | 'contact';
 
 export interface User {
   name: string;
