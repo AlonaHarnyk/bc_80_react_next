@@ -44,7 +44,7 @@ export default function AddBookForm() {
           <ErrorMessage
             name="author"
             component="span"
-            className={css.formErrorMassege}
+            className={css.formErrorMessage}
           />
         </label>
         <label>
@@ -53,16 +53,16 @@ export default function AddBookForm() {
           <ErrorMessage
             name="title"
             component="span"
-            className={css.formErrorMassege}
+            className={css.formErrorMessage}
           />
         </label>
         <label>
           Year
-          <Field type="number" name="year" cclassName={css.formField} />
+          <Field type="number" name="year" className={css.formField} />
           <ErrorMessage
             name="year"
             component="span"
-            className={css.formErrorMassege}
+            className={css.formErrorMessage}
           />
         </label>
         <label>
@@ -71,7 +71,7 @@ export default function AddBookForm() {
           <ErrorMessage
             name="description"
             component="span"
-            className={css.formErrorMassege}
+            className={css.formErrorMessage}
           />
         </label>
 

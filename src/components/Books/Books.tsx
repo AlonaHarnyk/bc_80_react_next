@@ -7,7 +7,7 @@ import ErrorNotification from '../ErrorNotification/ErrorNotification';
 import Modal from '../Modal/Modal';
 import { useQuery } from '@tanstack/react-query';
 import Pagination from '../Pagination/Pagination';
-import AddBookForm from './AddBookForm';
+import AddBookForm from '../AddBookForm/AddBookForm';
 
 export default function Books() {
   const [description, setDescription] = useState('');

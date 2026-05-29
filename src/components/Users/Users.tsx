@@ -5,6 +5,7 @@ import ErrorNotification from '../ErrorNotification/ErrorNotification';
 import UsersList from '../UsersList/UsersList';
 import { useState } from 'react';
 import SearchUserInput from '../SearchUserInput/SearchUserInput';
+import AddUserForm from '../AddUserForm/AddUserForm';
 
 export default function Users() {
   const [query, setQuery] = useState('');
@@ -24,6 +25,7 @@ export default function Users() {
 
   return (
     <>
+      <AddUserForm />
       <SearchUserInput searchUser={searchUser} />
       {users && users.length > 0 && <UsersList users={users} />}
       {isLoading && <Loading />}
