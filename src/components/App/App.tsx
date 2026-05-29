@@ -16,13 +16,13 @@ export default function App() {
       },
     },
     {
-      textContent: 'User',
+      textContent: 'Users',
       handler: () => {
         setActiveTab('users');
       },
     },
     {
-      textContent: 'Contact',
+      textContent: 'Contacts',
       handler: () => {
         setActiveTab('contact');
       },
