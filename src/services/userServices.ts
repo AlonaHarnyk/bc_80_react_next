@@ -18,5 +18,13 @@ export const addUser = async (userData: UserData) => {
   return data;
 }
 
-// Реалізувати запит на додавання юзера 
+export const deleteUser = async (id: User["id"]): Promise<User> => {
+  const { data } = await api.delete<User>(`/users/${id}`);
+  return data;
+}
+// Реалізувати запит на додавання юзера
 // (має викликатись при сабміті форми UserForm)
+
+// Додати компоненту UserItem кнопку видалення, 
+// при натисканні на яку елемент має видалятись 
+// (реалізувати відповідний запит)
