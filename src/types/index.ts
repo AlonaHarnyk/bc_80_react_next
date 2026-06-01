@@ -5,6 +5,12 @@ export interface Book {
   description: string;
   id: string;
 }
+export interface BookData {
+  author: string;
+  title: string;
+  year: number;
+  description: string;
+}
 
 export type TabVariant = 'users' | 'books' | 'contact';
 

@@ -1,6 +1,8 @@
 import { Formik, Form, Field, type FormikHelpers, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import css from './AddbookForm.module.css';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { addBook } from '../../services/bookServices';
 
 interface FormValues {
   author: string;
@@ -22,15 +24,24 @@ const bookFormSchema = Yup.object().shape({
   year: Yup.number().positive().integer().required(),
   description: Yup.string().max(200),
 });
-
 export default function AddBookForm() {
+  const queryClient = useQueryClient();
+  const { mutate } = useMutation({
+    mutationFn: addBook,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ['books'],
+      });
+    },
+  });
   const handlesubmit = (
     values: FormValues,
     actions: FormikHelpers<FormValues>,
   ) => {
-    console.log(values);
+    mutate(values);
     actions.resetForm();
   };
+
   return (
     <Formik
       initialValues={initialValues}
@@ -80,3 +91,5 @@ export default function AddBookForm() {
     </Formik>
   );
 }
+
+// Реалізувати запит на додавання книги (має викликатись при сабміті форми AddBookForm)
