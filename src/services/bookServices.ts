@@ -14,3 +14,8 @@ export const addBook = async (bookData: BookData): Promise<Book> => {
   const { data } = await axios.post<Book>('/books', bookData);
   return data;
 };
+
+export const deleteBook = async (id: Book['id']): Promise<Book> => {
+  const { data } = await axios.delete<Book>(`/books/${id}`);
+  return data;
+}

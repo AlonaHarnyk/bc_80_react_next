@@ -1,6 +1,8 @@
 import { ErrorMessage, Field, Form, Formik, type FormikHelpers } from 'formik';
 import css from './AddUserForm.module.css';
 import * as Yup from 'yup';
+import { addUser } from '../../services/userServices';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 interface FormValues {
   name: string;
   email: string;
@@ -14,11 +16,20 @@ const validateUserForm = Yup.object().shape({
   email: Yup.string().email().required(),
 });
 export default function AddUserForm() {
+  const queryClient = useQueryClient();
+
+  const { mutate } = useMutation({
+    mutationFn: addUser,
+    onSuccess() { queryClient.invalidateQueries({ queryKey: ['users'] })}
+  })
+
   const handelSubmit = (
     value: FormValues,
     active: FormikHelpers<FormValues>,
+
   ) => {
-    console.log(value);
+    mutate({...value, isOnline: false});
+    
     active.resetForm();
   };
   return (
