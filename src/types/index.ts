@@ -26,3 +26,7 @@ export interface UserData {
   email: string;
   isOnline: boolean;
 }
+
+export interface UserStatus {
+  isOnline: boolean;
+}
