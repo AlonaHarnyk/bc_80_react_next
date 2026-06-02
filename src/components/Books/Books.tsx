@@ -8,18 +8,27 @@ import Modal from '../Modal/Modal';
 import { useQuery } from '@tanstack/react-query';
 import Pagination from '../Pagination/Pagination';
 import AddBookForm from '../AddBookForm/AddBookForm';
+import SearchBookForm from '../SearchBookForm/SearchBookForm';
+import { useDebouncedCallback } from 'use-debounce';
 
 export default function Books() {
   const [description, setDescription] = useState('');
   const [page, setPage] = useState(1);
+  const [query, setQuery] = useState('');
+
+  const handleChange = useDebouncedCallback((query) => {
+    setQuery(query);
+    setPage(1)
+
+  }, 2000);
 
   const {
     data: books,
     isError,
     isLoading,
   } = useQuery({
-    queryKey: ['books', page],
-    queryFn: () => getBooks(page),
+    queryKey: ['books', page, query],
+    queryFn: () => getBooks(page, query),
   });
 
   const onShowModal = (bookDescription: string) => {
@@ -35,7 +44,8 @@ export default function Books() {
 
   return (
     <>
-      <AddBookForm />
+      {/* <AddBookForm /> */}
+      <SearchBookForm setQuery={handleChange} query={query} />
       {isLoading && <Loading />}
       <Pagination
         totalPages={8}

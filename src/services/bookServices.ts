@@ -2,9 +2,9 @@ import axios from 'axios';
 import type { Book, BookData } from '../types';
 axios.defaults.baseURL = 'https://6971cf4a32c6bacb12c49096.mockapi.io';
 
-export const getBooks = async (page: number): Promise<Book[]> => {
+export const getBooks = async (page: number, query: string): Promise<Book[]> => {
   const { data } = await axios.get<Book[]>('/books', {
-    params: { page, limit: 5 },
+    params: { page, limit: 5, search: query },
   });
 
   return data;
