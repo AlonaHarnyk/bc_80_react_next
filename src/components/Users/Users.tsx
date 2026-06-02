@@ -6,13 +6,11 @@ import UsersList from '../UsersList/UsersList';
 import { useState } from 'react';
 import SearchUserInput from '../SearchUserInput/SearchUserInput';
 import AddUserForm from '../AddUserForm/AddUserForm';
+import { useDebouncedCallback } from 'use-debounce';
 
 export default function Users() {
   const [query, setQuery] = useState('');
-
-  const searchUser = (query: string) => {
-    setQuery(query);
-  };
+  const searchUser = useDebouncedCallback(setQuery, 300);
 
   const {
     data: users,
@@ -26,7 +24,7 @@ export default function Users() {
   return (
     <>
       <AddUserForm />
-      <SearchUserInput searchUser={searchUser} />
+      <SearchUserInput searchUser={searchUser} query={query} />
       {users && users.length > 0 && <UsersList users={users} />}
       {isLoading && <Loading />}
       {isError && <ErrorNotification />}

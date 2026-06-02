@@ -1,21 +1,18 @@
 interface SearchUserInputProps {
   searchUser: (query: string) => void;
+  query: string;
 }
 
-export default function SearchUserInput({ searchUser }: SearchUserInputProps) {
-  const handleSubmit = (formData: FormData) => {
-    const searchQuery = formData.get('search') as string;
-    const trimmedValue = searchQuery.trim();
-
-    if (trimmedValue.length > 0) {
-      searchUser(trimmedValue);
-    }
-  };
-
+export default function SearchUserInput({
+  searchUser,
+  query,
+}: SearchUserInputProps) {
   return (
-    <form action={handleSubmit}>
-      <input type="text" name="search" />
-      <button type="submit">search user</button>
-    </form>
+    <input
+      type="text"
+      name="search"
+      defaultValue={query}
+      onChange={(e) => searchUser(e.target.value)}
+    />
   );
 }
