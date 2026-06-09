@@ -1,4 +1,5 @@
 import { Book } from '@/type';
+import Link from 'next/link';
 
 interface BooksListProps {
   books: Book[];
@@ -6,12 +7,9 @@ interface BooksListProps {
 export default function BooksList({ books }: BooksListProps) {
   return (
     <ul>
-      {books.map(book => (
-        <li key={book.id}>
-          <p>title:{book.title}</p>
-          <p>author:{book.author}</p>
-          <p>year:{book.year}</p>
-          <p>description:{book.description}</p>
+      {books.map(({ id, title }) => (
+        <li key={id}>
+          <Link href={`/books/${id}`}>{title}</Link>
         </li>
       ))}
     </ul>

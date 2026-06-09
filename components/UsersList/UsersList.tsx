@@ -1,27 +1,18 @@
 'use client';
-import { deleteUser } from '@/lib/usersServices';
+
 import { User } from '@/type';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import Link from 'next/link';
 
 interface UserListProps {
   users: User[];
 }
 
 export default function UserList({ users }: UserListProps) {
-  const queryClient = useQueryClient();
-  const { mutate } = useMutation({
-    mutationFn: deleteUser,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['users'] });
-    },
-  });
   return (
     <ul>
-      {users.map(user => (
-        <li key={user.id}>
-          <p>name:{user.name}</p>
-          <p>email:{user.email}</p>
-          <button onClick={() => mutate(user.id)}>Delete</button>
+      {users.map(({ name, id }) => (
+        <li key={id}>
+          <Link href={`/users/${id}`}>{name}</Link>
         </li>
       ))}
     </ul>

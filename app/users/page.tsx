@@ -1,5 +1,9 @@
 import { fetchUsers } from '@/lib/usersServices';
-import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
+import {
+  dehydrate,
+  HydrationBoundary,
+  QueryClient,
+} from '@tanstack/react-query';
 import UsersClient from './UsersClient';
 
 export default async function Users() {
