@@ -26,7 +26,7 @@ export default function Header() {
             <Link href="/users">Users</Link>
           </li>
           <li>
-            <Link href="/contacts">Contacts</Link>
+            <Link href="/contacts/all">Contacts</Link>
           </li>
         </ul>
       </nav>

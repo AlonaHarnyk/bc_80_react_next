@@ -9,7 +9,11 @@ function ContactsList({ contacts }: ContactsListProps) {
   return (
     <ul>
       {contacts.map(el => {
-        return <li key={el.id}><Link href={`/contacts/${el.id}`} >{el.name}</Link></li>;
+        return (
+          <li key={el.id}>
+            <Link href={`/contactDetails/${el.id}`}>{el.name}</Link>
+          </li>
+        );
       })}
     </ul>
   );
