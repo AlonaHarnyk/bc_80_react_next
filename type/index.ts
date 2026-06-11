@@ -12,3 +12,10 @@ export interface User {
   isOnline: boolean;
   id: string;
 }
+
+export interface Contact {
+  id: string;
+  email: string;
+  name: string;
+  hasWork: boolean
+}
