@@ -4,7 +4,7 @@ interface LayoutProps {
   modal: React.ReactNode;
 }
 
-function Layout({ children, sidebar ,modal}: LayoutProps) {
+function Layout({ children, sidebar, modal }: LayoutProps) {
   return (
     <div style={{ display: 'flex', gap: '20px' }}>
       {sidebar}
