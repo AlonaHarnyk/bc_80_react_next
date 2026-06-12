@@ -1,14 +1,15 @@
-import ContactsCategories from '@/components/ContactsCategories/ContactsCategories';
-
 interface LayoutProps {
   children: React.ReactNode;
+  sidebar: React.ReactNode;
+  modal: React.ReactNode;
 }
 
-function Layout({ children }: LayoutProps) {
+function Layout({ children, sidebar ,modal}: LayoutProps) {
   return (
     <div style={{ display: 'flex', gap: '20px' }}>
-      <ContactsCategories />
+      {sidebar}
       {children}
+      {modal}
     </div>
   );
 }
