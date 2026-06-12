@@ -5,14 +5,19 @@ import TanStackProvider from '@/components/TanStackProvider/TanStackProvider';
 
 interface RootLayoutProps {
   children: React.ReactNode;
+  details: React.ReactNode;
 }
-export default function RootLayout({ children }: RootLayoutProps) {
+
+export default function RootLayout({ children, details }: RootLayoutProps) {
   return (
     <html lang="en">
       <body>
         <TanStackProvider>
           <Header />
-          <main>{children}</main>
+          <main>
+            {children}
+            {details}
+          </main>
           <Footer />
         </TanStackProvider>
       </body>

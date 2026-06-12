@@ -1,6 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
+import css from './Modal.module.css';
 
 interface ModalProps {
   children: React.ReactNode;
@@ -11,9 +12,10 @@ export default function Modal({ children }: ModalProps) {
   const close = () => {
     router.back();
   };
+
   return (
-    <div className="backdrop">
-      <div className="modal">
+    <div className={css.backdrop}>
+      <div className={css.modal}>
         <button type="button" onClick={close}>
           X
         </button>
