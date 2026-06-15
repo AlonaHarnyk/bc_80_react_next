@@ -5,7 +5,12 @@ import {
   QueryClient,
 } from '@tanstack/react-query';
 import UsersClient from './UsersClient';
+import { Metadata } from 'next';
 
+export const metadata: Metadata = {
+  title: 'Users',
+  description: 'List of Users',
+};
 export default async function Users() {
   const queryClient = new QueryClient();
   await queryClient.prefetchQuery({
