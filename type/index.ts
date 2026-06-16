@@ -24,3 +24,9 @@ export interface UserDraft {
   name: string;
   email: string
 }
+
+export interface UserData {
+  name: string;
+  email: string;
+  isOnline: boolean;
+}

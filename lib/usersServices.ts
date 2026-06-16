@@ -1,4 +1,4 @@
-import { User } from '@/type';
+import { User, UserData } from '@/type';
 import axios from 'axios';
 
 const userApi = axios.create({
@@ -18,5 +18,10 @@ export async function deleteUser(id: User['id']): Promise<User> {
 export async function getUserById(userId: User['id']): Promise<User> {
   const { data } = await userApi.get<User>(`/users/${userId}`);
 
+  return data;
+}
+
+export async function addUser(userData: UserData) {
+  const { data } = await userApi.post<User>('/users', userData);
   return data;
 }

@@ -1,9 +1,22 @@
 'use client';
+import { addUser } from '@/lib/usersServices';
 import { useUserStore } from '@/store/userStore';
+import {
+  QueryClient,
+  useMutation,
+  useQueryClient,
+} from '@tanstack/react-query';
 
 function UserForm() {
-  const { draft, setUserDraft } = useUserStore();
-
+  const { draft, setUserDraft, clearUserDraft } = useUserStore();
+  const queryClient = useQueryClient();
+  const { mutate } = useMutation({
+    mutationFn: addUser,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['users'] });
+      clearUserDraft();
+    },
+  });
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement, HTMLInputElement>,
   ) => {
@@ -13,6 +26,10 @@ function UserForm() {
   const handleSubmit = (event: React.SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log(draft);
+    mutate({
+      ...draft,
+      isOnline: false,
+    });
   };
 
   return (
