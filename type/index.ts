@@ -19,3 +19,8 @@ export interface Contact {
   name: string;
   hasWork: boolean
 }
+
+export interface UserDraft {
+  name: string;
+  email: string
+}

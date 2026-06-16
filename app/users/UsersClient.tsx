@@ -1,5 +1,6 @@
 'use client';
 
+import UserForm from '@/components/UserForm/UserForm';
 import UserList from '@/components/UsersList/UsersList';
 import { fetchUsers } from '@/lib/usersServices';
 import { useQuery } from '@tanstack/react-query';
@@ -14,5 +15,6 @@ export default function UsersClient() {
   if (isLoading) return <div>Loading ...</div>;
   if (isError) return <div>Some error, try again...</div>;
 
-  return <>{data && data.length > 0 && <UserList users={data} />}</>;
+  return <>{data && data.length > 0 && <UserList users={data} />}
+    <UserForm/></>;
 }
