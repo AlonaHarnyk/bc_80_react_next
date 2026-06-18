@@ -2,7 +2,7 @@ import { Contact } from '@/type';
 import axios from 'axios';
 
 const contactsApi = axios.create({
-  baseURL: 'https://6240d2109b450ae274385b44.mockapi.io/api',
+  baseURL: 'http://localhost:3000/api',
 });
 
 export const getContacts = async (hasWork?: boolean): Promise<Contact[]> => {
